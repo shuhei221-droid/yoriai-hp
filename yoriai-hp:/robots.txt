@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://yoriai-hp.vercel.app/sitemap.xml
+Sitemap: https://yoriai-info.jp/sitemap.xml
