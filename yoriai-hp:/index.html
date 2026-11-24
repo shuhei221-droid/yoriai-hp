@@ -138,8 +138,8 @@ figure img{display:block;width:100%;height:100%;object-fit:cover;}
 /* HERO */
 #hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;color:var(--wh);background:var(--bk);overflow:hidden;padding:140px 0 48px;}
 .hero-bg{position:absolute;inset:0;}
-.hero-bg img{transform:scale(1.06);animation:heroZoom 14s ease-out forwards;}
-.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,13,13,.55) 0%,rgba(13,13,13,.15) 40%,rgba(13,13,13,.85) 100%);}
+.hero-bg img{object-position:70% center;transform:scale(1.06);animation:heroZoom 14s ease-out forwards;}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,13,13,.55) 0%,rgba(13,13,13,0) 60%),linear-gradient(180deg,rgba(13,13,13,.5) 0%,rgba(13,13,13,.1) 40%,rgba(13,13,13,.85) 100%);}
 @keyframes heroZoom{to{transform:scale(1);}}
 .hero-wrap{position:relative;z-index:1;width:100%;max-width:1280px;margin:0 auto;padding:0 48px;}
 .hero-kicker{display:flex;justify-content:space-between;font-family:var(--en);font-size:.78rem;font-weight:500;letter-spacing:.02em;opacity:.8;margin-bottom:28px;}
@@ -467,7 +467,7 @@ footer{background:var(--bk);color:var(--wh);padding:96px 0 40px;overflow:hidden;
 
 <!-- HERO -->
 <section id="hero">
-  <figure class="hero-bg"><img src="/images/hero.jpg" alt="" width="2400" height="1500" fetchpriority="high"></figure>
+  <figure class="hero-bg"><img src="/images/hero.jpg" alt="" width="1920" height="1080" fetchpriority="high"></figure>
   <div class="hero-wrap">
     <p class="hero-kicker"><span>(Back Office Support)</span><span>Kadoma, Osaka</span></p>
     <p class="hero-en" aria-hidden="true">Back office,<br><span>handled.</span></p>
@@ -512,12 +512,12 @@ footer{background:var(--bk);color:var(--wh);padding:96px 0 40px;overflow:hidden;
 <!-- ABOUT -->
 <section id="about">
   <div class="wrap about-grid">
-    <figure class="about-media rv"><img src="/images/about.jpg" alt="作業の様子" width="1600" height="2000" loading="lazy"></figure>
+    <figure class="about-media rv"><img src="/images/about.jpg" alt="事務作業のイメージ" width="1000" height="1333" loading="lazy"></figure>
     <div class="about-text rv">
       <p class="about-en">Paper &amp; Data,<br>in Kadoma.</p>
       <h2 class="about-h">紙もデータも、門真でまとめて。</h2>
       <p class="about-body">郵送やFAXで届く紙の書類も、会計ソフトやExcelのデータも。門真の拠点で同じ担当者が受け取り、整えて、お返しします。オンラインだけでは任せにくかった仕事こそ、ご相談ください。</p>
-      <figure class="about-sub"><img src="/images/hero-sub.jpg" alt="書類を整理する様子" width="800" height="800" loading="lazy"></figure>
+      <figure class="about-sub"><img src="/images/hero-sub.jpg" alt="書類整理のイメージ" width="800" height="800" loading="lazy"></figure>
     </div>
   </div>
 </section>
@@ -607,9 +607,9 @@ footer{background:var(--bk);color:var(--wh);padding:96px 0 40px;overflow:hidden;
     <span class="section-eyebrow">Strengths</span>
     <h2 class="section-h">Yoriaiが選ばれる、5つの理由。</h2>
     <div class="str-photos rv">
-      <figure class="sp1"><img src="/images/work-1.jpg" alt="パソコンでの入力作業" width="1200" height="900" loading="lazy"></figure>
-      <figure class="sp2"><img src="/images/staff.jpg" alt="担当者との打ち合わせ" width="1200" height="1500" loading="lazy"></figure>
-      <figure class="sp3"><img src="/images/work-2.jpg" alt="紙の書類とファイル" width="1200" height="900" loading="lazy"></figure>
+      <figure class="sp1"><img src="/images/work-1.jpg" alt="入力作業のイメージ" width="1100" height="825" loading="lazy"></figure>
+      <figure class="sp2"><img src="/images/staff.jpg" alt="打ち合わせのイメージ" width="900" height="1200" loading="lazy"></figure>
+      <figure class="sp3"><img src="/images/work-2.jpg" alt="書類とファイルのイメージ" width="900" height="900" loading="lazy"></figure>
     </div>
     <div class="str-inner rv">
       <div class="str-col"><div class="str-num">01</div><div class="str-name">小回りの利く運用</div><div class="str-body">小さな会社の事情に合わせて、運用の仕方を柔軟に調整します。</div></div>
@@ -679,7 +679,7 @@ footer{background:var(--bk);color:var(--wh);padding:96px 0 40px;overflow:hidden;
     <div class="ft-row">
       <div class="ft-logo"><img src="/logo.png" alt="Yoriai"></div>
       <div class="ft-links"><a href="mailto:info@yoriai-info.jp">info@yoriai-info.jp</a><a href="tel:080-5360-8397">080-5360-8397</a><span>大阪府門真市</span></div>
-      <div class="ft-copy">© 2025 合同会社Yoriai</div>
+      <div class="ft-copy">※ 掲載している写真はイメージです。<br>© 2025 合同会社Yoriai</div>
     </div>
   </div>
 </footer>
