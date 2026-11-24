@@ -551,6 +551,7 @@ footer{background:var(--ink);padding:32px;}
           <div class="form-row"><div class="fg"><label class="fl">電話番号<span class="req"> *</span></label><input type="tel" name="phone" class="fi" placeholder="例：06-XXXX-XXXX" required></div><div class="fg"><label class="fl">メールアドレス<span class="req"> *</span></label><input type="email" name="email" class="fi" placeholder="例：info@example.com" required></div></div>
           <div class="form-row"><div class="fg"><label class="fl">業種</label><select name="industry" class="fi"><option value="">選択してください</option><option>製造業・町工場</option><option>建設業・設備工事</option><option>不動産業</option><option>介護・福祉</option><option>士業事務所</option><option>医療クリニック</option><option>IT・Web</option><option>小売・サービス業</option><option>運送・物流</option><option>その他</option></select></div><div class="fg"><label class="fl">ご希望のプラン</label><select name="plan" class="fi" onchange="dl('form_plan_select',this.value)"><option value="">選択してください</option><option>経理サポート（¥20,000〜）</option><option>営業事務サポート（¥25,000〜）</option><option>データ整理・DX（¥30,000〜）</option><option>勤怠・給与サポート（¥15,000〜）</option><option>総務サポート（¥20,000〜）</option><option>秘書代行（¥30,000〜）</option><option>複数プランを検討中</option><option>まだ決まっていない</option></select></div></div>
           <div class="form-row full"><div class="fg"><label class="fl">お問い合わせ内容</label><textarea name="message" class="fi" placeholder="現在お困りの事務作業・業務量・導入時期など、何でもお気軽にご記入ください。"></textarea></div></div>
+          <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>このフィールドは入力しないでください<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
           <button type="submit" class="fs" id="f-submit">無料相談を申し込む</button>
           <div class="fn">入力いただいた情報はお問い合わせへの回答にのみ使用します。</div>
           <div class="fr" id="f-result"></div>
@@ -597,6 +598,8 @@ footer{background:var(--ink);padding:32px;}
 
 <script>
 // ━━ GAS エンドポイント ━━
+// Google Apps Script のウェブアプリURL（https://script.google.com/macros/s/…/exec）を設定する。
+// 未設定のままだと問い合わせは送信されないため、送信完了とは表示せず電話・メール・LINEを案内する。
 const GAS_URL = 'YOUR_GAS_WEBAPP_URL_HERE';
 
 // ━━ GTM dataLayer helper (自動学習用イベント送信) ━━
@@ -649,11 +652,10 @@ document.getElementById('inquiry-form').addEventListener('submit',async function
   dl('form_submit',data.plan);
   try{
     if(!GAS_URL||GAS_URL==='YOUR_GAS_WEBAPP_URL_HERE'){
-      await new Promise(function(r){setTimeout(r,800);});
-      res.className='fr ok';res.textContent='送信しました。自動返信メールをご確認ください。担当者より24時間以内にご連絡します。（※GAS設定後に実際に送信されます）';
-      this.reset();dl('form_success_demo',data.plan);
+      res.className='fr err';res.textContent='現在フォームからの送信を受け付けできません。お手数ですが、お電話（080-5360-8397）・メール（info@yoriai-info.jp）・LINEでご連絡ください。';
+      dl('form_not_configured',data.plan);
     }else{
-      var r=await(await fetch(GAS_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})).json();
+      var r=await(await fetch(GAS_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data)})).json();
       if(r.status==='ok'){res.className='fr ok';res.textContent='送信しました。自動返信メールをご確認ください。担当者より24時間以内にご連絡します。';this.reset();dl('form_success',data.plan);}
       else throw new Error(r.message);
     }
