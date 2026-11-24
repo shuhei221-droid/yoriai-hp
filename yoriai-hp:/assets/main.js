@@ -1,4 +1,6 @@
 // ━━ GAS エンドポイント ━━
+// Google Apps Script のウェブアプリURL（https://script.google.com/macros/s/…/exec）を設定する。
+// 未設定のままだと問い合わせは送信されないため、送信完了とは表示せず電話・メール・LINEを案内する。
 const GAS_URL = 'YOUR_GAS_WEBAPP_URL_HERE';
 
 // ━━ GTM dataLayer helper (自動学習用イベント送信) ━━
@@ -52,11 +54,10 @@ if(_form)_form.addEventListener('submit',async function(e){
   dl('form_submit',data.plan);
   try{
     if(!GAS_URL||GAS_URL==='YOUR_GAS_WEBAPP_URL_HERE'){
-      await new Promise(function(r){setTimeout(r,800);});
-      res.className='fr ok';res.textContent='送信しました。自動返信メールをご確認ください。担当者より24時間以内にご連絡します。（※GAS設定後に実際に送信されます）';
-      this.reset();dl('form_success_demo',data.plan);
+      res.className='fr err';res.textContent='現在フォームからの送信を受け付けできません。お手数ですが、お電話（080-5360-8397）・メール（info@yoriai-info.jp）・LINEでご連絡ください。';
+      dl('form_not_configured',data.plan);
     }else{
-      var r=await(await fetch(GAS_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})).json();
+      var r=await(await fetch(GAS_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data)})).json();
       if(r.status==='ok'){res.className='fr ok';res.textContent='送信しました。自動返信メールをご確認ください。担当者より24時間以内にご連絡します。';this.reset();dl('form_success',data.plan);}
       else throw new Error(r.message);
     }
