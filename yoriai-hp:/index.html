@@ -409,6 +409,55 @@ footer{background:var(--ink);color:var(--paper);padding:56px 0 40px;border-top:1
   .mq-track{animation:none;}
   .rv{opacity:1;transform:none;}
 }
+/* PHOTO LAYOUT */
+figure{margin:0;}
+figure img{display:block;width:100%;height:100%;object-fit:cover;}
+.sp-only{display:none;}
+.hero-wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:center;}
+.hero-text .hero-h1{word-break:keep-all;font-size:clamp(2.3rem,4.6vw,4.2rem);margin-bottom:36px;}
+.hero-text .hero-lead{margin-bottom:36px;}
+.hero-text .hero-actions{justify-content:flex-start;margin-bottom:40px;}
+.hero-visual{position:relative;padding:0 0 64px 48px;}
+.hv-main{aspect-ratio:4/5;border-radius:220px 220px var(--r) var(--r);overflow:hidden;box-shadow:0 30px 60px -30px rgba(34,32,29,.45);}
+.hv-main img{transform:scale(1.04);transition:transform 1.6s ease;}
+.hero-visual:hover .hv-main img{transform:scale(1);}
+.hv-sub{position:absolute;left:0;bottom:0;width:44%;aspect-ratio:1;border-radius:50%;overflow:hidden;border:8px solid var(--paper);box-shadow:0 20px 40px -20px rgba(34,32,29,.45);}
+.hero-mark{right:-18vw;top:-6vh;}
+.hv-badge{position:absolute;right:-28px;top:-28px;width:128px;height:128px;animation:spin 24s linear infinite;}
+.hv-badge circle{fill:var(--ink);}
+.hv-badge text{fill:var(--paper);font-size:15px;letter-spacing:3.2px;font-family:'Noto Sans JP',sans-serif;font-weight:500;}
+.hv-badge .hv-badge-c{font-family:var(--serif);font-size:30px;letter-spacing:0;fill:var(--brand-lt);font-weight:700;}
+@keyframes spin{to{transform:rotate(360deg);}}
+#about{position:relative;padding:0 0 128px;background:var(--paper);}
+.about-media{height:clamp(320px,52vw,640px);overflow:hidden;}
+.about-media img{filter:saturate(.92);}
+.about-card{position:relative;margin:-160px 0 0 auto;max-width:600px;background:var(--white);border-radius:var(--r);padding:56px 56px 52px;box-shadow:0 30px 60px -40px rgba(34,32,29,.5);}
+.about-en{font-family:var(--serif);font-style:italic;font-size:.95rem;color:var(--brand);margin-bottom:14px;letter-spacing:.02em;}
+.about-h{font-family:var(--serif);font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:700;line-height:1.45;margin-bottom:22px;word-break:keep-all;}
+.about-body{font-size:.98rem;color:var(--ink-mid);line-height:2.05;}
+#problem{border-top:1px solid var(--rule);}
+.str-photos{display:grid;grid-template-columns:1.2fr .8fr 1fr;gap:20px;align-items:end;margin:8px 0 72px;}
+.str-photos figure{border-radius:var(--r);overflow:hidden;}
+.str-photos .sp1{aspect-ratio:4/3;}
+.str-photos .sp2{aspect-ratio:4/5;transform:translateY(32px);}
+.str-photos .sp3{aspect-ratio:4/3;}
+@media(max-width:960px){
+  .hero-wrap{grid-template-columns:1fr;gap:56px;}
+  .hero-visual{max-width:520px;margin:0 auto;width:100%;}
+  .about-card{margin:-120px 0 0;max-width:none;padding:44px 36px;}
+}
+@media(max-width:600px){
+  .sp-only{display:inline;}
+  .hero-visual{padding:0 0 40px 28px;}
+  .hv-badge{width:96px;height:96px;right:-6px;top:-20px;}
+  .hv-sub{border-width:6px;}
+  #about{padding-bottom:80px;}
+  .about-card{margin-top:-72px;padding:36px 24px;}
+  .str-photos{grid-template-columns:1fr 1fr;gap:12px;margin-bottom:56px;}
+  .str-photos .sp1{grid-column:1/-1;}
+  .str-photos .sp2{transform:none;}
+}
+@media(prefers-reduced-motion:reduce){.hv-badge{animation:none;}}
 </style>
 </head>
 <body>
@@ -436,22 +485,32 @@ footer{background:var(--ink);color:var(--paper);padding:56px 0 40px;border-top:1
 <section id="hero">
   <div class="hero-mark" aria-hidden="true"></div>
   <div class="hero-wrap">
-    <p class="hero-kicker">Back Office Support — Kadoma, Osaka</p>
-    <h1 class="hero-h1">社長の時間を、<br><em>経営</em>に取り戻す。</h1>
-    <div class="hero-grid">
+    <div class="hero-text">
+      <p class="hero-kicker">Back Office Support — Kadoma, Osaka</p>
+      <h1 class="hero-h1">社長の時間を、<br><em>経営</em>に<wbr>取り戻す。</h1>
       <p class="hero-lead">請求書、書類整理、データ入力、勤怠の集計。<br>毎日少しずつ時間を取られる事務作業を、<br>大阪・門真の固定担当者がまとめてお引き受けします。</p>
       <div class="hero-actions">
         <a href="#contact" class="btn-main" onclick="dl('hero_cta_primary')">無料相談を申し込む <span aria-hidden="true">→</span></a>
         <a href="#plans" class="btn-sub" onclick="dl('hero_cta_plans')">プランを見る</a>
       </div>
+      <ul class="hero-tags">
+        <li class="hero-tag">大阪府門真市に拠点</li>
+        <li class="hero-tag">紙の書類・FAXに対応</li>
+        <li class="hero-tag">ダブルチェック体制</li>
+        <li class="hero-tag">固定担当者制</li>
+        <li class="hero-tag">月単位・契約期間の縛りなし</li>
+      </ul>
     </div>
-    <ul class="hero-tags">
-      <li class="hero-tag">大阪府門真市に拠点</li>
-      <li class="hero-tag">紙の書類・FAXに対応</li>
-      <li class="hero-tag">ダブルチェック体制</li>
-      <li class="hero-tag">固定担当者制</li>
-      <li class="hero-tag">月単位・契約期間の縛りなし</li>
-    </ul>
+    <div class="hero-visual">
+      <figure class="hv-main"><img src="/images/hero.jpg" alt="門真の拠点" width="1200" height="1500" fetchpriority="high"></figure>
+      <figure class="hv-sub"><img src="/images/hero-sub.jpg" alt="書類を整理する様子" width="800" height="800" loading="lazy"></figure>
+      <svg class="hv-badge" viewBox="0 0 200 200" aria-hidden="true">
+        <defs><path id="hvc" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs>
+        <circle cx="100" cy="100" r="98" />
+        <text><textPath href="#hvc">BACK OFFICE SUPPORT · KADOMA · OSAKA · </textPath></text>
+        <text x="100" y="112" text-anchor="middle" class="hv-badge-c">Yoriai</text>
+      </svg>
+    </div>
   </div>
 </section>
 
@@ -472,6 +531,18 @@ footer{background:var(--ink);color:var(--paper);padding:56px 0 40px;border-top:1
     <div class="strip-item"><div class="strip-num">1<span>営業日以内</span></div><div class="strip-label">無料相談へのご返信の目安です。</div></div>
   </div>
 </div>
+
+<!-- ABOUT -->
+<section id="about">
+  <figure class="about-media"><img src="/images/about.jpg" alt="作業の様子" width="2400" height="1000" loading="lazy"></figure>
+  <div class="wrap">
+    <div class="about-card rv">
+      <p class="about-en">Paper &amp; Data, in Kadoma.</p>
+      <h2 class="about-h">紙もデータも、<br>門真でまとめて。</h2>
+      <p class="about-body">郵送やFAXで届く紙の書類も、会計ソフトやExcelのデータも。門真の拠点で同じ担当者が受け取り、整えて、お返しします。オンラインだけでは任せにくかった仕事こそ、ご相談ください。</p>
+    </div>
+  </div>
+</section>
 
 <!-- PROBLEM -->
 <section id="problem">
@@ -557,6 +628,11 @@ footer{background:var(--ink);color:var(--paper);padding:56px 0 40px;border-top:1
   <div class="wrap">
     <span class="section-eyebrow">Strengths</span>
     <h2 class="section-h">Yoriaiが選ばれる、5つの理由。</h2>
+    <div class="str-photos rv">
+      <figure class="sp1"><img src="/images/work-1.jpg" alt="パソコンでの入力作業" width="1200" height="900" loading="lazy"></figure>
+      <figure class="sp2"><img src="/images/staff.jpg" alt="担当者との打ち合わせ" width="1200" height="1500" loading="lazy"></figure>
+      <figure class="sp3"><img src="/images/work-2.jpg" alt="紙の書類とファイル" width="1200" height="900" loading="lazy"></figure>
+    </div>
     <div class="str-inner rv">
       <div class="str-col"><div class="str-num">01</div><div class="str-name">小回りの利く運用</div><div class="str-body">小さな会社の事情に合わせて、運用の仕方を柔軟に調整します。</div></div>
       <div class="str-col"><div class="str-num">02</div><div class="str-name">地域密着</div><div class="str-body">大阪・門真エリアを中心に、顔の見える関係で伴走します。</div></div>
