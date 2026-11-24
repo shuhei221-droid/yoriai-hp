@@ -440,6 +440,54 @@ footer{background:var(--bk);color:var(--wh);padding:96px 0 40px;overflow:hidden;
   .mq-track{animation:none;} .hero-bg img{animation:none;transform:none;}
   .rv{opacity:1;transform:none;}
 }
+/* CAREER */
+#career{background:var(--bk);color:var(--wh);padding:0 0 144px;}
+.career-hero{position:relative;min-height:640px;display:flex;align-items:flex-end;padding:144px 0 72px;overflow:hidden;}
+.career-bg{position:absolute;inset:0;}
+.career-bg img{object-position:70% center;}
+.career-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,13,13,.75) 0%,rgba(13,13,13,.1) 65%),linear-gradient(180deg,rgba(13,13,13,.2) 0%,rgba(13,13,13,1) 100%);}
+.career-head{position:relative;z-index:1;width:100%;}
+#career .section-eyebrow{color:var(--wh);}
+.career-en{font-family:var(--en);font-weight:600;font-size:clamp(3rem,8vw,7.5rem);line-height:.92;letter-spacing:-.05em;margin-bottom:32px;}
+.career-en span{color:var(--brand);}
+#career .section-h{margin-bottom:16px;}
+.career-lead{font-size:1rem;line-height:2;opacity:.82;max-width:620px;}
+.career-svcs{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,.2);margin:24px 0 96px;}
+.csv{padding:36px 28px 0 0;}
+.csv+.csv{padding-left:28px;border-left:1px solid rgba(255,255,255,.2);}
+.csv-no{font-family:var(--en);font-size:.9rem;font-weight:600;color:var(--brand);margin-bottom:24px;}
+.csv-name{font-size:1.2rem;font-weight:700;margin-bottom:12px;}
+.csv-body{font-size:.88rem;color:rgba(255,255,255,.68);line-height:1.95;}
+#career .plans-cat-label{color:var(--wh)!important;}
+#career .plans-cat{border-bottom:1px solid rgba(255,255,255,.2);margin-bottom:24px;}
+.career-plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.cpl{border:1px solid rgba(255,255,255,.18);border-radius:4px;padding:36px 32px;transition:border-color var(--t),background var(--t);}
+.cpl:hover{border-color:rgba(255,255,255,.45);}
+.cpl-rec{background:var(--wh);color:var(--ink);border-color:var(--wh);}
+.cpl-rec:hover{border-color:var(--wh);}
+.cpl-name{font-family:var(--en);font-size:1.6rem;font-weight:600;letter-spacing:-.02em;}
+.cpl-sub{font-size:.84rem;opacity:.7;margin:4px 0 28px;}
+.cpl-price{font-family:var(--en);font-size:2.2rem;font-weight:600;letter-spacing:-.04em;line-height:1;padding-bottom:24px;margin-bottom:24px;border-bottom:1px solid rgba(255,255,255,.18);}
+.cpl-rec .cpl-price{color:var(--brand);border-bottom-color:var(--rule);}
+.cpl-price small{font-family:'Noto Sans JP',sans-serif;font-size:.8rem;font-weight:500;letter-spacing:0;opacity:.7;margin-left:4px;}
+.cpl-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.cpl-list li{font-size:.9rem;display:flex;gap:10px;align-items:baseline;}
+.cpl-list li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--brand);flex-shrink:0;transform:translateY(-2px);}
+.career-note{font-size:.78rem;color:rgba(255,255,255,.55);margin-top:24px;line-height:1.9;}
+.career-cta{margin-top:48px;}
+@media(max-width:1024px){
+  .career-svcs{grid-template-columns:1fr 1fr;}
+  .csv,.csv+.csv{padding:28px 20px 28px 0;border-left:none;border-bottom:1px solid rgba(255,255,255,.2);}
+  .csv:nth-child(2n){padding-left:20px;border-left:1px solid rgba(255,255,255,.2);}
+  .career-plans{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  #career{padding-bottom:88px;}
+  .career-hero{min-height:520px;padding:96px 0 40px;}
+  .career-svcs{grid-template-columns:1fr;margin-bottom:64px;}
+  .csv:nth-child(2n){padding-left:0;border-left:none;}
+  .cpl{padding:28px 24px;}
+}
 </style>
 </head>
 <body>
@@ -456,6 +504,7 @@ footer{background:var(--bk);color:var(--wh);padding:96px 0 40px;overflow:hidden;
     <ul class="nav-links">
       <li><a href="#comparison" onclick="dl('nav_comparison')">比較</a></li>
       <li><a href="#plans" onclick="dl('nav_plans')">プラン</a></li>
+      <li><a href="#career" onclick="dl('nav_career')">採用支援</a></li>
       <li><a href="#steps" onclick="dl('nav_steps')">始め方</a></li>
       <li><a href="#faq" onclick="dl('nav_faq')">よくある質問</a></li>
     </ul>
@@ -584,6 +633,35 @@ footer{background:var(--bk);color:var(--wh);padding:96px 0 40px;overflow:hidden;
   </div>
 </section>
 
+<!-- CAREER -->
+<section id="career">
+  <div class="career-hero">
+    <figure class="career-bg"><img src="/images/career.jpg" alt="求人原稿を見直すイメージ" width="1920" height="1080" loading="lazy"></figure>
+    <div class="wrap career-head rv">
+      <span class="section-eyebrow">Yoriai Career</span>
+      <p class="career-en">Hiring,<br><span>redesigned.</span></p>
+      <h2 class="section-h">採用支援</h2>
+      <p class="career-lead">「求人を出しても応募が来ない」「応募はあっても定着しない」。中小企業の採用を、現状の診断から求人の見直し、採用広報、日々の運用まで一緒に整えます。</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="career-svcs rv">
+      <div class="csv"><div class="csv-no">01</div><div class="csv-name">採用診断</div><div class="csv-body">今の求人内容・掲載先・応募から採用までの流れを確認し、つまずいている箇所を整理します。</div></div>
+      <div class="csv"><div class="csv-no">02</div><div class="csv-name">求人の改善</div><div class="csv-body">仕事内容・条件・職場の様子が伝わるよう、求人票や募集ページの原稿を見直します。</div></div>
+      <div class="csv"><div class="csv-no">03</div><div class="csv-name">採用広報</div><div class="csv-body">会社の魅力や働く人の様子を、採用ページやSNSで伝えるための企画と原稿づくりを支援します。</div></div>
+      <div class="csv"><div class="csv-no">04</div><div class="csv-name">運用の伴走</div><div class="csv-body">応募状況の振り返りや改善を定期的に行い、採用活動が回り続ける状態をつくります。</div></div>
+    </div>
+    <div class="plans-cat"><span class="plans-cat-label">採用支援のプラン</span></div>
+    <div class="career-plans rv">
+      <div class="cpl"><p class="cpl-name">START</p><p class="cpl-sub">まずは現状を整えたい</p><p class="cpl-price">¥180,000<small>〜 / 月</small></p><ul class="cpl-list"><li>採用診断</li><li>求人票・募集ページの改善</li><li>月1回の打ち合わせ</li></ul></div>
+      <div class="cpl cpl-rec"><p class="cpl-name">GROWTH</p><p class="cpl-sub">応募を増やしていきたい</p><p class="cpl-price">¥350,000<small>〜 / 月</small></p><ul class="cpl-list"><li>STARTの内容</li><li>採用広報の企画・原稿づくり</li><li>応募状況の分析と改善</li></ul></div>
+      <div class="cpl"><p class="cpl-name">PARTNER</p><p class="cpl-sub">採用活動をまるごと相談したい</p><p class="cpl-price">¥600,000<small>〜 / 月</small></p><ul class="cpl-list"><li>GROWTHの内容</li><li>採用活動の運用伴走</li><li>定例ミーティング</li></ul></div>
+    </div>
+    <p class="career-note">※ 別途、初期設計費がかかります。金額は内容をお聞きしたうえでお見積りします。<br>※ 当社は職業紹介（求人企業と求職者のあっせん）は行っていません。</p>
+    <div class="career-cta"><a href="#contact" class="btn-main" onclick="dl('career_cta')">採用について相談する <span aria-hidden="true">→</span></a></div>
+  </div>
+</section>
+
 <!-- STEPS -->
 <section id="steps">
   <div class="wrap">
@@ -660,7 +738,7 @@ footer{background:var(--bk);color:var(--wh);padding:96px 0 40px;overflow:hidden;
         <form id="inquiry-form">
           <div class="form-row"><div class="fg"><label class="fl">会社名<span class="req"> *</span></label><input type="text" name="company" class="fi" placeholder="例：株式会社〇〇" required></div><div class="fg"><label class="fl">お名前<span class="req"> *</span></label><input type="text" name="name" class="fi" placeholder="例：山田 太郎" required></div></div>
           <div class="form-row"><div class="fg"><label class="fl">電話番号<span class="req"> *</span></label><input type="tel" name="phone" class="fi" placeholder="例：06-XXXX-XXXX" required></div><div class="fg"><label class="fl">メールアドレス<span class="req"> *</span></label><input type="email" name="email" class="fi" placeholder="例：info@example.com" required></div></div>
-          <div class="form-row"><div class="fg"><label class="fl">業種</label><select name="industry" class="fi"><option value="">選択してください</option><option>製造業・町工場</option><option>建設業・設備工事</option><option>不動産業</option><option>介護・福祉</option><option>士業事務所</option><option>医療クリニック</option><option>IT・Web</option><option>小売・サービス業</option><option>運送・物流</option><option>その他</option></select></div><div class="fg"><label class="fl">ご希望のプラン</label><select name="plan" class="fi" onchange="dl('form_plan_select',this.value)"><option value="">選択してください</option><option>経理サポート（¥20,000〜）</option><option>営業事務サポート（¥25,000〜）</option><option>データ整理・DX（¥30,000〜）</option><option>勤怠・給与サポート（¥15,000〜）</option><option>総務サポート（¥20,000〜）</option><option>秘書代行（¥30,000〜）</option><option>複数プランを検討中</option><option>まだ決まっていない</option></select></div></div>
+          <div class="form-row"><div class="fg"><label class="fl">業種</label><select name="industry" class="fi"><option value="">選択してください</option><option>製造業・町工場</option><option>建設業・設備工事</option><option>不動産業</option><option>介護・福祉</option><option>士業事務所</option><option>医療クリニック</option><option>IT・Web</option><option>小売・サービス業</option><option>運送・物流</option><option>その他</option></select></div><div class="fg"><label class="fl">ご希望のプラン</label><select name="plan" class="fi" onchange="dl('form_plan_select',this.value)"><option value="">選択してください</option><option>経理サポート（¥20,000〜）</option><option>営業事務サポート（¥25,000〜）</option><option>データ整理・DX（¥30,000〜）</option><option>勤怠・給与サポート（¥15,000〜）</option><option>総務サポート（¥20,000〜）</option><option>秘書代行（¥30,000〜）</option><option>採用支援（CAREER）</option><option>複数プランを検討中</option><option>まだ決まっていない</option></select></div></div>
           <div class="form-row full"><div class="fg"><label class="fl">お問い合わせ内容</label><textarea name="message" class="fi" placeholder="現在お困りの事務作業・業務量・導入時期など、何でもお気軽にご記入ください。"></textarea></div></div>
           <button type="submit" class="fs" id="f-submit">無料相談を申し込む</button>
           <div class="fn">入力いただいた情報はお問い合わせへの回答にのみ使用します。</div>
