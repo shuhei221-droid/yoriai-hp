@@ -51,16 +51,12 @@ if(_form)_form.addEventListener('submit',async function(e){
   data.page=location.href;data.ts=new Date().toISOString();
   dl('form_submit',data.plan);
   try{
-    if(!GAS_URL||GAS_URL==='YOUR_GAS_WEBAPP_URL_HERE'){
-      await new Promise(function(r){setTimeout(r,800);});
-      res.className='fr ok';res.textContent='送信しました。自動返信メールをご確認ください。担当者より24時間以内にご連絡します。（※GAS設定後に実際に送信されます）';
-      this.reset();dl('form_success_demo',data.plan);
-    }else{
-      var r=await(await fetch(GAS_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})).json();
-      if(r.status==='ok'){res.className='fr ok';res.textContent='送信しました。自動返信メールをご確認ください。担当者より24時間以内にご連絡します。';this.reset();dl('form_success',data.plan);}
-      else throw new Error(r.message);
-    }
-  }catch(err){res.className='fr err';res.textContent='送信に失敗しました。お電話（080-5360-8397）またはメール（info@yoriai-info.jp）でご連絡ください。';dl('form_error');}
+    if(!GAS_URL||GAS_URL==='YOUR_GAS_WEBAPP_URL_HERE')throw new Error('not_configured');
+    // text/plain で送る：GAS はブラウザからの application/json を CORS で受け付けないため
+    var r=await(await fetch(GAS_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data)})).json();
+    if(r.status==='ok'){res.className='fr ok';res.textContent='送信しました。自動返信メールをご確認ください。担当者より原則1営業日以内にご連絡します。';this.reset();dl('form_success',data.plan);}
+    else throw new Error(r.message);
+  }catch(err){res.className='fr err';res.textContent='送信に失敗しました。お電話（080-5360-8397）またはメール（info@yoriai-info.jp）でご連絡ください。';dl('form_error',String(err&&err.message||''));}
   finally{btn.disabled=false;btn.textContent='無料相談を申し込む';}
 });
 // ━━ 表示演出（ナビの区切り線・スクロール表示・プランカードのキーボード操作） ━━
